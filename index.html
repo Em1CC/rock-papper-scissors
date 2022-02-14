@@ -6,69 +6,81 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rock papper scissors</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+  
+  <h1 class="titulo">
+    Rock Papper Scissors
+  </h1>
+  <h2>Computer choice: <span id="computer-choice"></span></h2>
+  <h2>User choice: <span id="user-choice"></span></h2>
+  <h2>Result: <span id="result"></span></h2>
+
+  <button class="button" id="rock">Rock</button>
+  <button class="button" id="papper">Papper</button>
+  <button class="button" id="scissors">Scissors</button>
+  
+  
+  
+  
   <script>
-    let rand = Math.floor(Math.random() * 3);
-
-    function computerPlay() {
-      if (rand === 0) {
-        return ("rock");
-      } else if (rand === 1) {
-        return ("papper");
-      } else {
-        return ("scissors");
-      }
-    }
-
-    function playRoundRock(computerSelection) {
-
-      if (computerSelection === "scissors") {
-        return ("You win, rock kill scissors");
-      } else if (computerSelection === "papper") {
-        return ("You lose, rock defeat with papper");
-      } else if (computerSelection === "rock") {
-        return ("It's a draw");
-      }
-    }
+   const computerChoiceDisplay = document.getElementById('computer-choice');
+   const userChoiceDisplay = document.getElementById('user-choice');
+   const resultDisplay = document.getElementById('result');
+   const possibleChoices = document.querySelectorAll('button');
+   let userChoice;
+   let computerChoice;
 
 
-    function playRoundPapper(computerSelection) {
+   possibleChoices.forEach(possibleChoices => possibleChoices.addEventListener('click', (e) => {
+     userChoice = e.target.id;
+     userChoiceDisplay.innerHTML = userChoice;
+     generateComputerChoice();
+     getResult();
+   }))
+   
+   
+   function generateComputerChoice() {
+     const randomNumber = Math.floor(Math.random() * 3)+1;
+     if (randomNumber === 1){
+       computerChoice = 'rock';
+     }else if (randomNumber === 2){
+       computerChoice = 'papper';
+     }else if (randomNumber === 3){
+       computerChoice = 'scissors';
+     }
 
-      if (computerSelection === "scissors") {
-        return ("You lose, scissors kill papper");
-      } else if (computerSelection === "papper") {
-        return ("It's a draw");
-      } else if (computerSelection === "rock") {
-        return ("You win!!!");
-      }
-    }
-
-    function playRoundScissors(computerSelection) {
-
-      if ((computerSelection === "scissors")) {
-        return ("You draw");
-      } else if ((computerSelection === "papper")) {
-        return ("You win, scissors defeat papper");
-      } else if ((computerSelection === "rock")) {
-        return ("You lose :(");
-      }
-    }
+     computerChoiceDisplay.innerHTML = computerChoice;
+   }
 
 
-    let hand = prompt("What's your hand?");
-    const computerSelection = computerPlay();
+   function getResult(){
+     if (computerChoice === userChoice){
+       result = "It's a draw";
+     }
+     if (computerChoice === 'rock' && userChoice === 'papper'){
+       result = "You win";
+     }
+     if (computerChoice === 'rock' && userChoice === 'scissors'){
+       result = "You lose";
+     }
+     if (computerChoice === 'papper' && userChoice === 'rock'){
+       result = "You lose";
+     }
+     if (computerChoice === 'papper' && userChoice === 'scissors'){
+       result = "You win";
+     }
+     if (computerChoice === 'scissors' && userChoice === 'papper'){
+       result = "You lose";
+     }
+     if (computerChoice === 'scissors' && userChoice === 'rock'){
+       result = "You win";
+     }
+     resultDisplay.innerHTML = result;
+   }
 
-    if (hand.toLowerCase() === "rock") {
-      console.log(playRoundRock(computerSelection));
-    } else if (hand.toLowerCase() === "papper") {
-      console.log(playRoundPapper(computerSelection));
-    } else if (hand.toLowerCase() === "scissors") {
-      console.log(playRoundScissors(computerSelection))
-    } else {
-      console.log("The value does not exist, try with rock, papper or scissors.")
-    } 
   </script>
 </body>
 
