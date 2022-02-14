@@ -1,74 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock papper scissors</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock papper scissors</title>
 </head>
+
 <body>
-    <script>
-        let rand= Math.floor(Math.random() * 3);
+  <script>
+    let rand = Math.floor(Math.random() * 3);
 
-function computerPlay(){
- 	if(rand === 0){
-  return("rock");
-}else if(rand===1){
-  return ("papper");
-}else{
-  return("scissors");
-}
-}
+    function computerPlay() {
+      if (rand === 0) {
+        return ("rock");
+      } else if (rand === 1) {
+        return ("papper");
+      } else {
+        return ("scissors");
+      }
+    }
 
-function playRoundRock(computerSelection) {
-  
-  if(computerSelection==="scissors" ){
-    return ("You win, rock kill scissors");
-  }else if(computerSelection==="papper" ){
-    return ("You lose, rock defeat with papper");
-  }else if(computerSelection==="rock" ){
-    return ("It's a draw");
-}
-}
+    function playRoundRock(computerSelection) {
 
-
-function playRoundPapper( computerSelection) {
-  
-  if(computerSelection==="scissors") {
-    return ("You lose, scissors kill papper");
-  }else if(computerSelection==="papper") {
-    return ("It's a draw");
-  }else if(computerSelection==="rock") {
-    return ("You win!!!");
-}
-}
-
-function playRoundScissors( computerSelection) {
-  
-  if((computerSelection==="scissors") ){
-    return ("You draw");
-  }else if((computerSelection==="papper") ){
-    return ("You win, scissors defeat papper");
-  }else if((computerSelection==="rock") ){
-    return ("You lose :(");
-}
-}
+      if (computerSelection === "scissors") {
+        return ("You win, rock kill scissors");
+      } else if (computerSelection === "papper") {
+        return ("You lose, rock defeat with papper");
+      } else if (computerSelection === "rock") {
+        return ("It's a draw");
+      }
+    }
 
 
-let hand = prompt("What's your hand?");
-const computerSelection = computerPlay();
+    function playRoundPapper(computerSelection) {
 
-if (hand.toLowerCase() === "rock") {
-  console.log(playRoundRock(computerSelection));
-} else if (hand.toLowerCase() === "papper"){
-  console.log(playRoundPapper(computerSelection));
-}else if(hand.toLowerCase() === "scissors"){
-  console.log(playRoundScissors( computerSelection))
-}else{
-  console.log("The value does not exist, try with rock, papper or scissors.")
-} 
-    </script>
+      if (computerSelection === "scissors") {
+        return ("You lose, scissors kill papper");
+      } else if (computerSelection === "papper") {
+        return ("It's a draw");
+      } else if (computerSelection === "rock") {
+        return ("You win!!!");
+      }
+    }
+
+    function playRoundScissors(computerSelection) {
+
+      if ((computerSelection === "scissors")) {
+        return ("You draw");
+      } else if ((computerSelection === "papper")) {
+        return ("You win, scissors defeat papper");
+      } else if ((computerSelection === "rock")) {
+        return ("You lose :(");
+      }
+    }
+
+
+    let hand = prompt("What's your hand?");
+    const computerSelection = computerPlay();
+
+    if (hand.toLowerCase() === "rock") {
+      console.log(playRoundRock(computerSelection));
+    } else if (hand.toLowerCase() === "papper") {
+      console.log(playRoundPapper(computerSelection));
+    } else if (hand.toLowerCase() === "scissors") {
+      console.log(playRoundScissors(computerSelection))
+    } else {
+      console.log("The value does not exist, try with rock, papper or scissors.")
+    } 
+  </script>
 </body>
+
 </html>
 
 <!-- let rand= Math.floor(Math.random() * 3);
@@ -165,4 +168,3 @@ if (hand.toLowerCase() === "rock") {
 }else{
   console.log("The value do not exist, try with rock, papper or scissors.")
 } -->
-
